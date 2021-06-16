@@ -1,0 +1,273 @@
+    	/* Set the size of the div element that contains the map */
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
+
+body {
+	margin: 0;
+	line-height: normal;
+	font-size: 100%;
+}
+
+#joy1 {
+	width: 200px;
+	position: fixed;
+	height: 200px;
+	margin-left: 10px;
+	bottom: 30px;
+	left: 0;
+}
+
+#joy2 {
+	width: 200px;
+	position: fixed;
+	right: 0;
+	height: 200px;
+	bottom: 30px;
+}
+
+.statusbar {
+	margin: 0;
+	height: 36px;
+	width: 100%;
+	padding: 0;
+	/*overflow: hidden;*/
+	position: fixed;
+}
+
+.green-gardinet {
+	background: linear-gradient(135deg, #63a224, #000000b0 50%);
+}
+
+.red-gardinet {
+	background: linear-gradient(135deg, #a22424, #000000b0 50%);
+}
+
+.statusbar-inner {
+	/* padding: 4; */
+	padding: 9px;
+	color: white;
+	/* padding-left: 9px; */
+	font-family: system-ui;
+}
+
+.connection {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.wifi {
+	display: inline-block;
+	vertical-align: top;
+	margin-top: -5px;
+}
+
+.modem {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: -13px;
+	font-size: 7px;
+	margin-top: -4px;
+	width: 12.63px;
+}
+
+.batteryContainer {
+	float: right;
+	flex-direction: row;
+	align-items: center;
+	vertical-align: top;
+	margin: 3px;
+	margin-left: 6px;
+}
+
+.battery-pv {
+	display: inline-block;
+	vertical-align: top;
+	float: right;
+}
+
+.stream {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.wave {
+	display: inline-block;
+	border: 3px solid transparent;
+	border-top-color: #eeeeee;
+	border-radius: 50%;
+	border-style: solid;
+	margin: 3px;
+}
+
+.waveStrength-3 .wv4.wave,
+.waveStrength-2 .wv4.wave,
+.waveStrength-2 .wv3.wave,
+.waveStrength-1 .wv4.wave,
+.waveStrength-1 .wv3.wave,
+.waveStrength-1 .wv2.wave,
+.waveStrength-0 .wv4.wave,
+.waveStrength-0 .wv3.wave,
+.waveStrength-0 .wv2.wave,
+.waveStrength-0 .wv1.wave {
+	border-top-color: #ffffff45;
+}
+
+.batteryContainer {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.batteryOuter {
+	border-radius: 3px;
+	border: 1px solid white;
+	padding: 1px;
+	width: 25px;
+}
+
+.batteryBump {
+	border-radius: 2px;
+	background-color: white;
+	margin: 2px;
+	width: 1px;
+	height: 3px;
+}
+
+#batteryLevel {
+	border-radius: 2px;
+	background-color: #73AD21;
+	width: 18px;
+	height: 9px;
+}
+
+$signal-strength-bar-height: 50px;
+$signal-strength-bar-width: 80px;
+.sizing-box {
+	height: $signal-strength-bar-height;
+	width: $signal-strength-bar-width;
+}
+
+.signal-bars {
+	display: inline-block;
+	vertical-align: top;
+	height: 19px;
+	width: 30px;
+}
+
+.signal-bars .bar {
+	width: 17%;
+	margin-left: -11%;
+	min-height: 20%;
+	display: inline-block;
+}
+
+.signal-bars .bar.first-bar {
+	height: 20%;
+}
+
+.signal-bars .bar.second-bar {
+	height: 40%;
+}
+
+.signal-bars .bar.third-bar {
+	height: 60%;
+}
+
+.signal-bars .bar.fourth-bar {
+	height: 80%;
+}
+
+.signal-bars .bar.fifth-bar {
+	height: 99%;
+}
+
+.good .bar {
+	background-color: #eeeeee;
+}
+
+.ok .bar {
+	background-color: #eeeeee;
+}
+
+.bars-4 .bar.fifth-bar,
+.bars-3 .bar.fifth-bar,
+.bars-3 .bar.fourth-bar,
+.bars-2 .bar.fifth-bar,
+.bars-2 .bar.fourth-bar,
+.bars-2 .bar.third-bar,
+.bars-1 .bar.fifth-bar,
+.bars-1 .bar.fourth-bar,
+.bars-1 .bar.third-bar,
+.bars-1 .bar.second-bar,
+.bars-0 .bar.fifth-bar,
+.bars-0 .bar.fourth-bar,
+.bars-0 .bar.third-bar,
+.bars-0 .bar.second-bar,
+.bars-0 .bar.first-bar {
+	background-color: #ffffff45;
+}
+
+.gps-icon {
+	background-image: url(https://kolyanok.ru/gps.svg);
+	display: inline-block;
+	height: 22px;
+	vertical-align: top;
+	width: 22px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	margin-top: -3px;
+	margin-left: 3px;
+}
+
+.inactive-gps {
+	filter: invert(100%);
+	opacity: 0.3;
+}
+
+.active-gps {
+	filter: invert(100%) sepia(0%) saturate(248%) hue-rotate(193deg) brightness(115%) contrast(87%);
+}
+
+.gps-sattelites {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: -6px;
+	font-size: 7px;
+	margin-left: 3px;
+	margin-top: -4px;
+}
+
+.gps-link {
+	color: white !important;
+	text-decoration: none !important;
+}
+
+.gps-link:hover {
+	color: white !important;
+	text-decoration: none !important;
+}
+
+.speed {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 5px;
+}
+
+#table-wifisignal {
+	filter: invert(1);
+}
+
+a.disabled {
+	pointer-events: none;
+	cursor: default;
+}

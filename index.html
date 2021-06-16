@@ -1,0 +1,112 @@
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+      <script src="https://code.jquery.com/jquery-1.8.3.js"></script>
+      <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+      <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+      <script
+         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBPbyn8_Wd-1YIN4WriJX1kuDkb-ncFkA&callback=initMap&libraries=&v=weekly"
+         defer
+         ></script>
+      <link rel="stylesheet" href="index.css">
+      </style>
+      <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="joy.min.js"></script>
+      <script src="./index.js"></script>
+   </head>
+   <body>
+      <div id="statusbar" class="statusbar red-gardinet">
+         <div class="statusbar-inner">
+            <div id="connection" class="connection">Disconnected</div>
+            <a href="#full-width-wifi" class="gps-link" data-toggle="modal" onclick="socket.send('scan')">
+               <div class="wifi">
+                  <div id="wifisignal" class="waveStrength-0">
+                     <div class="wv4 wave">
+                        <div class="wv3 wave">
+                           <div class="wv2 wave">
+                              <div class="wv1 wave">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </a>
+            <div id="nettype" class="modem">N/A</div>
+            <div id="modemsignal" class="signal-bars mt1 sizing-box good bars-0">
+               <div class="first-bar bar"></div>
+               <div class="second-bar bar"></div>
+               <div class="third-bar bar"></div>
+               <div class="fourth-bar bar"></div>
+               <div class="fifth-bar bar"></div>
+            </div>
+            <a id="gps-link" href="#full-width" class="gps-link disabled" data-toggle="modal">
+               <div id="gps-sattelites" class="gps-sattelites">0</div>
+               <div id="gps-icon" class="gps-icon inactive-gps"></div>
+            </a>
+            <div class="batteryContainer">
+               <div class="batteryOuter">
+                  <div id="batteryLevel" style="width: 0%"></div>
+               </div>
+               <div class="batteryBump"></div>
+            </div>
+            <div id="speed" class="speed"></div>
+            <div id="battery-pv" class="battery-pv">No info</div>
+         </div>
+      </div>
+      <div>
+         <div class="stream">
+            <iframe style="border:0" width="640" height="480" src="http://kolyanok.ru:8001/?action=stream"></iframe>
+         </div>
+      </div>
+      <div id="joy1"></div>
+      <div id="joy2"></div>
+      <script type="text/javascript">
+         if(isTouchDevice())
+         {
+         	joy1Y=0;
+         	joy2Y=0;
+         	var joy1 = new JoyStick('joy1');
+         	var joy2 = new JoyStick('joy2');
+         	setInterval(function(){ j1 = joy1.GetY()/2; if (j1!=joy1Y) {socket.emit('left', j1); joy1Y=j1; }}, 5);
+         	setInterval(function(){ j2 = joy2.GetY()/2; if (j2!=joy2Y) {socket.emit('right', j2); joy2Y=j2}}, 5);
+         }
+      </script>
+      <div id="full-width" class="modal hide fade in" tabindex="-1">
+         <div class="modal-header">
+            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+            <h1 id="myModalLabel">Map</h1>
+         </div>
+         <div class="modal-body ">
+            <div id="map"></div>
+         </div>
+      </div>
+      <div id="full-width-wifi" class="modal hide fade in" tabindex="-1">
+         <div class="modal-header">
+            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+            <h1>Wi-Fi networks avalible</h1>
+         </div>
+         <div class="modal-body ">
+            <table class="table table-hover table-bordered datos table-responsive">
+               <thead>
+                  <tr>
+                     <th><span class="fix">Signal</span></th>
+                     <th><span class="fix">SSID</span></th>
+                     <th><span class="fix">Encrypted</span></th>
+                     <th><span class="fix">Action</span></th>
+                  </tr>
+               </thead>
+               <tbody id="wifinetworks">
+                  <tr>
+                     <td>No information</td>
+                     <td>No information</td>
+                     <td>No information</td>
+                     <td>No information</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </body>
+</html>

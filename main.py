@@ -123,7 +123,6 @@ socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
 @socketio.on('message')
 def handle_message(message):
     global blockpercentage
-    print('received message: ' + message)
     p.ChangeDutyCycle(50)
     p1.ChangeDutyCycle(50)
     blockpercentage = True
